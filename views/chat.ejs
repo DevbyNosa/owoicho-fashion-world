@@ -1,0 +1,68 @@
+<%- include("./partials/adminHeader") %>
+
+<section>
+  <form action="/backend/search" method="GET" class="search-div">
+    <input 
+      type="text" 
+      name="q" 
+      placeholder="Search name or contact..." 
+      value="<%= typeof searchQuery !== 'undefined' ? searchQuery : '' %>"
+      class="search-input"
+    >
+    <button type="submit" class="search-btn">Search</button>
+    
+    <% if (typeof searchQuery !== 'undefined' && searchQuery) { %>
+      <a href="/backend/chats">Clear Search</a>
+    <% } %>
+  </form>
+</section>
+
+<div id="chat-list" 
+     hx-get="/backend/chats?page=1" 
+     hx-trigger="every 5s" 
+     hx-select="#chat-list" 
+     hx-target="#chat-list" 
+     hx-swap="morph:outerHTML"
+     hx-ext="morph">
+
+    <% messages.forEach((chat, index) => { %>
+        
+        <% if (index === messages.length - 1 && hasMore) { %>
+            <div hx-get="/backend/chats?page=<%= currentPage + 1 %>" 
+                 hx-trigger="revealed" 
+                 hx-swap="afterend" 
+                 hx-select=".messageContainer, hr, .pagination-trigger">
+            </div>
+        <% } %>
+
+        
+        <a id="chat-<%= chat.id %>" href="/backend/chat/<%= chat.id %>" class="messageContainer">
+        
+           <h4><%= chat.chat_contact %></h4>
+              <p class="message">
+     
+        <% if (chat.chat_message && chat.chat_message.length > 100) { %>
+            <%= chat.chat_message.substring(0, 100) %>...
+        <% } else { %>
+            <%= chat.chat_message %>
+        <% } %>
+    </p>
+            <div class="details-prompt">
+                
+                <p class="name">Name: <%= chat.chat_name %></p>
+                <p class="service">Service: <%= chat.chat_service %></p>
+               
+                <p class="date"><%= new Date(chat.created_at).toLocaleDateString() %></p>
+            </div>
+        </a>
+        <hr>
+    <% }) %>
+
+    <% if (messages.length === 0) { %>
+        <p style="text-align: center;">No messages received yet.</p>
+    <% } %>
+</div>
+</main>
+<script src="/js/admin.js"></script>
+</body>
+</html>

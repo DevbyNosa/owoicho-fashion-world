@@ -1,0 +1,33 @@
+
+ <%- include("./partials/adminHeader") %>
+    
+        <a class="messageContainer">
+           <h4><%= chat.chat_contact %></h4>
+            <p class="message"><%= chat.chat_message %></p>
+            <div class="details-prompt">
+                <p class="name">Name: <%= chat.chat_name %></p>
+                <p class="service">Service: <%= chat.chat_service %></p>
+                <p class="date"><%= chat.created_at %></p>
+            </div>
+
+         
+        </a>
+      
+
+        <div class="action-buttons">
+         <a href="/backend/chats">← Back </a>
+     
+         <button
+    hx-delete="/api/chats/<%= chat.id %>"
+    hx-confirm="Are you sure?"
+    hx-target="body" 
+    class="delete-btn">
+    Delete
+</button>
+  
+         </div>
+   </main>
+
+ <script src="/js/admin.js"></script>
+</body>
+</html>

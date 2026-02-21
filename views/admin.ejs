@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owoicho Fashion Login</title>
+    <link rel="icon" href="/images/owoicho-fashion-world.jpeg" type="image/jp">
+  <link rel="stylesheet" href="/css/app.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  
+  
+</head>
+<body>
+  <form action="/backend" method="post" class="admin-form">
+    <img src="images/owoicho-fashion-world.jpeg" alt="logo">
+    <input type="text" placeholder="Username" name="username" required>
+    <input type="password" placeholder="Password" name="password" class="input-password">
+    <button type="submit" class="submit-btn">Login</button>
+   
+
+
+    
+    <i class="fa-solid fa-eye visibilty-icon" id="togglePassword"></i>
+
+  </form>
+
+   <% if (locals.err) { %>
+  <p class="error-message"><span class="err-span"><%= err %></span></p>
+<% } %>
+
+
+  <script src="/js/admin.js" type="module"></script>
+</body>
+</html>

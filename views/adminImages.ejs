@@ -1,0 +1,34 @@
+<%- include('partials/adminHeader')%>
+   
+    <div class="sidebar">
+    
+        <div class="frontend-settings">
+          <p>Manage Images</p>
+        </div>
+  
+
+    <main class="main-content">
+        <div class="content">
+            <h2 style="font-size: 25px;margin-bottom: 10px;">Upload Image</h2>
+            <% if (data.image_path) { %>
+                <p style="margin-bottom: 10px;">Current Image:</p>
+                <img  src="<%= data.image_path %>" alt="Current Image" style="max-width: 200px; border-radius: 10px; margin-bottom: 20px;">
+            <% } %>
+            <form action="/backend/images" method="POST" enctype="multipart/form-data">
+                <label  for="image">Select Image:</label>
+                <input style="margin-top: 10px; padding: 10px; outline: none; border-radius: 10px;" type="file" name="image" id="image" accept="image/*" required>
+                <br><br>
+                <button 
+                class="btn btn-primary"
+                type="submit">Upload Image</button>
+            </form>
+            <br>
+            <a href="/backend/dashboard">Back to Dashboard</a>
+        </div>
+    </main>
+      </div>
+
+<script src="/js/admin.js"></script>
+<script src="/js/adminstyle.js"></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<%- include("partials/header.ejs") %>
+<section class="hero-section">
+ 
+  
+   <div class="hero-overlay"></div>
+  
+  <div class="nested-hero">
+    <h1 class="headerh1">
+      <%= data.header_h1 %>
+</h1>
+    <p class="header-text headerptxt"><%= data.header_text %></p>
+    <button class="btn btn-primary btn-primary-hero contact-btn">Contact Now</button>
+  </div>
+   
+  </section>
+
+   <h1 class="about-h1">About OWoicho Fashion World</h1>
+  
+  <section id="about" class="about-section">
+  <div class="about-container">
+    
+    <div class="about-images">
+      <div class="image-wrapper">
+        <img src="<%= data.logo_path || '/images/WhatsApp Image 2026-01-16 at 6.38.00 PM.jpeg' %>" alt="Tailoring Process" class="img-back">
+        <img src="<%= data.image_path || '/images/WhatsApp Image 2026-01-16 at 6.37.55 PM.jpeg' %>" alt="Finished Native Wear" class="img-front">
+      </div>
+    </div>
+
+    <div class="about-content">
+      <h4 class="sub-title">Established in Benin City</h4>
+      <h2 class="about-h2">The Vision Behind<br>Owoicho Fashion World</h2>
+      
+      <p class="aboutTxt"><%= data.about_text %></p>
+      
+      <p>We specialize in garments that define the modern African gentleman. Our philosophy is simple: <em>Every stitch tells your story.</em> We don't just sew; we engineer fits that command respect.</p>
+
+      <ul class="about-features">
+        <li><span class="span-txt">Agbada Specialists:</span> Regal silhouettes with custom embroidery.</li>
+        <li><span class="span-txt">Native & Senator:</span> Sharp, clean lines for the corporate and social world.</li>
+        <li><span class="span-txt">Bespoke Fit:</span> Hand-measured to ensure perfection for every body type.</li>
+      </ul>
+      
+    
+    </div>
+
+  </div>
+</section>
+
+<section class="whatsapp-chat">
+   <a href="http://
+wa.link/2jfzc2"><img src="/images/whatsaapp.png" alt="Chat us on whatsapp" class="whatsapp-icon"></a>
+</section>
+
+<section class="services-container">
+  <h2 class="services-title">Our Specialties</h2>
+  
+  <div class="cards-wrapper">
+    <div class="fashion-card">
+      <div class="card-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="currentColor"><path d="m480-120-330-150v-390l330-150 330 150v390l-330 150Z"/></svg>
+      </div>
+      <h3>Royal Agbada</h3>
+      <p>Masterfully tailored grand robes that command respect. We focus on the perfect weight of the fabric and intricate neck embroidery.</p>
+    </div>
+
+    <div class="fashion-card">
+      <div class="card-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="currentColor"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-32q0-34 17.5-62.5T224-296q62-31 126.5-47.5T480-360q64 0 128.5 16.5T736-296q29 13 46.5 41.5T800-192v32H160Z"/></svg>
+      </div>
+      <h3>Senator Wears</h3>
+      <p>Sharp, minimalistic, and modern. Our Senator wears are cut to fit your physique perfectly for corporate and social events.</p>
+    </div>
+
+    <div class="fashion-card">
+      <div class="card-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="currentColor"><path d="M240-160q-33 0-56.5-23.5T160-240v-480q0-33 23.5-56.5T240-800h480q33 0 56.5 23.5T800-720v480q0 33-23.5 56.5T720-160H240Z"/></svg>
+      </div>
+      <h3>Native Kaftans</h3>
+      <p>The everyday gentleman's choice. High-quality fabric meets clean stitching for a comfortable yet expensive look.</p>
+    </div>
+  </div>
+</section>
+
+<section class="explore-section" id="explore">
+  <div class="explore-header">
+    <h2 class="about-h2">Explore Our Collections</h2>
+    <p>A glimpse into the craftsmanship of Owoicho Fashion World.</p>
+  </div>
+
+  <div class="explore-grid">
+    <div class="explore-item">
+      <img src="/images/WhatsApp Image 2026-01-17 at 3.21.00 PM.jpeg" alt="Luxury Agbada" loading="lazy">
+      <div class="explore-overlay">
+        <span>The Royal Collection</span>
+        <h3>Hand-Stitched Agbada</h3>
+      </div>
+    </div>
+
+    <div class="explore-item">
+      <img src="/images/WhatsApp Image 2026-01-17 at 3.21.01 PM.jpeg" alt="Senator Wear" loading="lazy">
+      <div class="explore-overlay">
+        <span>The Executive Collection</span>
+        <h3>Modern Senator Wear</h3>
+      </div>
+    </div>
+
+    <div class="explore-item">
+      <img src="/images/WhatsApp Image 2026-01-16 at 6.38.01 PM.jpeg" alt="Embroidery Detail" loading="lazy">
+      <div class="explore-overlay">
+        <span>The Detail Collection</span>
+        <h3>Intricate Embroidery</h3>
+      </div>
+    </div>
+
+    <div class="explore-item">
+      <img src="images/WhatsApp Image 2026-01-16 at 6.38.00 PM.jpeg" alt="Kaftan" loading="lazy">
+      <div class="explore-overlay">
+        <span>The Daily Collection</span>
+        <h3>Bespoke Kaftans</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <h2 class="about-h2">Frequently Asked Questions</h2>
+  <p class="faq-subtitle">Everything you need to know about getting your Owoicho fit.</p>
+
+  <div class="faq-container">
+    
+    <div class="faq-item">
+      <input type="checkbox" id="faq1" class="faq-toggle">
+      <label for="faq1" class="faq-question">
+        How do I get my measurements to you if I'm not in Benin City?
+        <span class="faq-icon"></span>
+      </label>
+      <div class="faq-answer">
+        <p>We provide a detailed measurement guide and can hop on a video call to walk you through the process. Once we have your accurate numbers, we can craft and ship your outfit anywhere in Nigeria.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq2" class="faq-toggle">
+      <label for="faq2" class="faq-question">
+        How long does it take to sew a complete Clothe / attire set?
+        <span class="faq-icon"></span>
+      </label>
+      <div class="faq-answer">
+        <p>A standard bespoke Clothe set typically takes 7 to 14 working days. This allows for precise cutting, intricate embroidery work, and quality finishing that meets our 22-year-old founder's high standards.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq3" class="faq-toggle">
+      <label for="faq3" class="faq-question">
+        Do you provide the fabric, or can I bring mine?
+        <span class="faq-icon"></span>
+      </label>
+      <div class="faq-answer">
+        <p>Both! We have a curated selection of premium linens, wools, and native fabrics. However, if you have a specific fabric you love, you can bring it to our Benin City studio for custom tailoring.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <input type="checkbox" id="faq4" class="faq-toggle">
+      <label for="faq4" class="faq-question">
+        Can you handle urgent "Express" orders?
+        <span class="faq-icon"></span>
+      </label>
+      <div class="faq-answer">
+        <p>Yes, we offer express services for an additional fee depending on our current schedule. Please contact us directly via WhatsApp to confirm availability for urgent events.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="contact-container">
+    
+    <div class="contact-info">
+      <h2 class="about-h2">Get Your Perfect Fit</h2>
+      <p>Ready to stand out? Reach out to the 22-year-old master tailor in Benin City for your bespoke native and Agbada wears.</p>
+      
+      <div class="contact-details">
+        <div class="detail-item">
+          <span class="span-txt locationText">Location:</span>
+          <p><%= data.location %></p>
+        </div>
+        <div class="detail-item">
+          <span class="span-txt">WhatsApp/Call:</span>
+          <p class="number"><%= data.number %></p>
+        </div>
+        <div class="detail-item">
+          <span class="span-txt">Fitting Hours:</span>
+          <p>Mon - Sat: 9:00 AM - 6:00 PM</p>
+        </div>
+      </div>
+    </div>
+
+    <form id="contactForm" class="contact-form" action="/chat" method="POST">
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Your Full Name" required>
+      </div>
+      <div class="form-group">
+        <input type="text" name="text" placeholder="Mobile number or email" required>
+      </div>
+      <div class="form-group">
+        <select name="service" required>
+          <option value="" disabled selected>Select Outfit Type</option>
+          <option value="agbada">Royal Agbada Set</option>
+          <option value="senator">Senator/Native Wear</option>
+          <option value="kaftan">Bespoke Kaftan</option>
+          <option value="other">Other/Enquiry</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <textarea
+         class="textMessage"
+         name="message" rows="5"
+         placeholder="Tell us about your event or send your measurements..." 
+         required
+         maxlength="300"
+         ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+  
+ <% const msg = typeof notify !== "undefined" ? notify : ""; %>
+<div class="notifier">
+  <span><%= msg %></span>
+</div>
+  
+
+  </div>
+</section>
+<script src="js/frontend.js"></script>
+
+
+<%- include("partials/footer.ejs") %>

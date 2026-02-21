@@ -1,0 +1,127 @@
+@media(max-width: 1200px) {
+  .sidebar {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .header-frontend {
+    width: 30%;
+    margin: 0 auto;
+  }
+
+  .admin-logo {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .admin-body {
+    width: 100vw;
+  }
+
+}
+@media(max-width: 1058px) {
+  .hero-section {
+    width: 100vw;
+    height: 100vh;
+   
+  }
+
+  .hero-img {
+  width: 35rem;
+  border-radius: 1rem;
+  margin: 3rem auto;
+
+  
+}
+
+
+}
+@media(max-width: 980px) {
+  .about {
+    flex-direction: column;
+    gap: 10rem; 
+    text-align: center;
+  }
+  
+  .about-images {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    min-height: 45rem;
+  }
+  
+  .first-image {
+    left: 10%;
+  }
+
+  .about-container {
+    flex-direction: column; 
+    text-align: center;
+    gap: 12rem; 
+  }
+
+  .image-wrapper {
+    width: 28rem;
+    height: 38rem;
+  }
+
+  .img-back {
+    left: -2rem;
+  }
+
+  .img-front {
+    left: 2rem;
+  }
+
+  .about-features li {
+    align-items: center;
+  }
+}
+@media(max-width: 760px) {
+  html, body {
+    overflow-x: hidden; 
+    width: 100vw;
+  }
+  h1 {
+    font-size: 3.2rem;
+  }
+  h2 { font-size: 2.8rem; }
+  p { font-size: 1.4rem; }
+
+
+ .nested-hero p {
+    letter-spacing: 0.5px;
+  }
+
+  .about img {
+    width: 25rem;
+   
+  }
+
+  .admin-pd{
+    font-size: 2.7rem;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .show-chat::after {
+    right: -20rem;
+    transform: translateX(15rem);
+  }
+
+  .down-arrow {
+    margin-left: 30rem;
+  }
+
+  .frontend-btn-settings {
+    width: 100%;
+  }
+
+  .footer-socials {
+    justify-content: center;
+  }
+ 
+}

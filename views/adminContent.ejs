@@ -1,0 +1,43 @@
+<%- include('partials/adminHeader')%>
+
+<main class="editor-shell">
+    <h2 class="panel-heading">Refine Brand Content</h2>
+    
+    <form action="/backend/contents/<%= data.id %>" method="POST" class="craft-form-box">
+        <div class="field-wrap">
+            <label class="craft-tag">Main Brand Statement</label>
+            <input type="text" name="headerh1" class="craft-entry" value="<%= data.header_h1 %>">
+        </div>
+
+        <div class="field-wrap">
+            <label class="craft-tag">Sub-Header Narrative</label>
+            <input type="text" name="headerptxt" class="craft-entry" value="<%= data.header_text %>">
+        </div>
+
+        <div class="field-wrap">
+            <label class="craft-tag">Brand Heritage (About)</label>
+            <textarea name="aboutTxt" class="craft-entry craft-area"><%= data.about_text %></textarea>
+        </div>
+
+        <div class="field-wrap">
+            <label class="craft-tag">Studio Coordinates</label>
+            <input type="text" name="locationText" class="craft-entry" value="<%= data.location %>">
+        </div>
+
+        <div class="field-wrap">
+            <label class="craft-tag">Client Hotline</label>
+            <input type="text" name="number" class="craft-entry" value="<%= data.number %>">
+        </div>
+
+        <div class="field-wrap">
+            <label class="craft-tag">Official Correspondence</label>
+            <input type="email" name="email" class="craft-entry" value="<%= data.email %>">
+        </div>
+        
+        <button type="submit" class="commit-trigger">Apply Changes</button>
+    </form>
+</main>
+
+<script src="/js/admin.js"></script>
+</body>
+</html>
