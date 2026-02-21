@@ -93,7 +93,7 @@
    ```bash
    npm start
    # or for development
-   npm run dev
+   npm run dev 
    ```
 
 6. **Access the application**
@@ -133,9 +133,7 @@
 - `GET /404` - Error page
 
 ### Admin Routes
-- `GET /backend` - Admin login
-- `POST /backend` - Admin authentication
-- Protected admin panel routes (authentication required)
+- Protected, not to be seen
 
 ## 🎨 Customization
 
@@ -154,7 +152,7 @@
 - Extend admin panel with additional management tools
 - Integrate payment systems for future e-commerce
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -162,15 +160,13 @@
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📝 License
 
-This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Author
+## 👩‍💻 Author
 
 **DevbyNosa** - *Full-Stack Developer*
 - GitHub: [@devbynosa](https://github.com/devbynosa)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+- LinkedIn: [Nosa Igbinosa](www.linkedin.com/in/devbynosa)
 
 ## 🙏 Acknowledgments
 
@@ -182,7 +178,7 @@ This project is licensed under the ISC License - see the [LICENSE](LICENSE) file
 
 <div align="center">
 
-**Made with ❤️ for the fashion-forward gentleman**
+**Made by Devbynosa for the fashionforward gentleman**
 
 ⭐ Star this repo if you found it helpful!
 
