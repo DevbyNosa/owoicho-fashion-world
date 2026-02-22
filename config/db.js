@@ -4,12 +4,15 @@ dotenv.config();
 
 const { Pool } = pg;
 
+
+const isProduction = process.env.NODE_ENV === 'production';
+
 const pool = new Pool({
-  user: process.env.PG_USER,
-  host: process.env.HOST,
-  database: process.env.PG_DATABASE,
-  password: process.env.PG_PASSWORD || "",
-  port: process.env.PG_PORT, 
+  
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 export const query = (text, params) => pool.query(text, params);
