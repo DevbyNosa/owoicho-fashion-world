@@ -35,6 +35,25 @@ router.get("/backend/contents/:id", async (req, res) => {
   }
 });
 
+router.post("/backend/contents", async (req, res) => {
+  if (!req.isAuthenticated()) { 
+    return res.redirect("/backend"); 
+  }
+  const { headerh1, headerptxt, aboutTxt, locationText, number, email} = req.body;
+
+  try {
+   const response = await query(
+    "INSERT INTO content_upload (header_h1, header_text, about_text, location, number, email) VALUES ($1, $2, $3, $4, $5, $6)",
+    [headerh1, headerptxt, aboutTxt, locationText, number, email]
+   )
+
+    res.redirect("/backend/contents");
+  } catch (error) {
+    console.error("Error creating content:", error);
+    res.status(500).send("Database error");
+  }
+});
+
 router.post("/backend/contents/:id", async (req, res) => {
   if (!req.isAuthenticated()) { 
     return res.redirect("/backend"); 
