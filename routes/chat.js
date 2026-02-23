@@ -157,18 +157,66 @@ router.get("/backend/search",
 });
 
 
-router.delete("/api/chats/:id", async (req, res) => {
-   if (!req.isAuthenticated()) { 
-    return res.status(401).json({ error: "Unauthorized" }); 
-  }
+router.post("/backend/chat/:id/delete", async (req, res) => {
   const { id } = req.params;
+  
+  console.log("POST /backend/chat/:id/delete called with ID:", id);
+  console.log("Is Authenticated:", req.isAuthenticated());
+  
+  if (!req.isAuthenticated()) { 
+    console.log("User not authenticated, redirecting to login");
+    return res.redirect("/backend"); 
+  }
+  
   try {
+    console.log("Attempting to delete chat with ID:", id);
     const result = await query("DELETE FROM chats WHERE id = $1 RETURNING id", [id]);
     
+    console.log("Delete result - rowCount:", result.rowCount);
+    
     if (result.rowCount === 0) {
+      console.log("Chat not found with ID:", id);
+      return res.status(404).send("Chat not found");
+    }
+    
+    console.log("Chat deleted successfully, redirecting to /backend/chats");
+    res.redirect("/backend/chats");
+  } catch (err) {
+    console.error("Delete Chat Error:", {
+      message: err.message,
+      code: err.code,
+      detail: err.detail,
+      stack: err.stack
+    });
+    res.status(500).send("Failed to delete chat: " + err.message);
+  }
+});
+
+router.delete("/api/chats/:id", async (req, res) => {
+  const { id } = req.params;
+  
+  console.log("DELETE /api/chats/:id called with ID:", id);
+  console.log("Is Authenticated:", req.isAuthenticated());
+  console.log("User:", req.user);
+  console.log("Session:", req.sessionID);
+  
+  if (!req.isAuthenticated()) { 
+    console.log("User not authenticated, returning 401");
+    return res.status(401).json({ error: "Unauthorized - please login" }); 
+  }
+  
+  try {
+    console.log("Attempting to delete chat with ID:", id);
+    const result = await query("DELETE FROM chats WHERE id = $1 RETURNING id", [id]);
+    
+    console.log("Delete result - rowCount:", result.rowCount);
+    
+    if (result.rowCount === 0) {
+      console.log("Chat not found with ID:", id);
       return res.status(404).json({ error: "Chat not found" });
     }
     
+    console.log("Chat deleted successfully");
     // For HTMX, send the redirect header
     res.setHeader("HX-Redirect", "/backend/chats");
     res.status(200).json({ success: true, message: "Chat deleted successfully" });
@@ -176,9 +224,10 @@ router.delete("/api/chats/:id", async (req, res) => {
     console.error("Delete Chat Error:", {
       message: err.message,
       code: err.code,
-      detail: err.detail
+      detail: err.detail,
+      stack: err.stack
     });
-    res.status(500).json({ error: "Failed to delete chat" });
+    res.status(500).json({ error: "Failed to delete chat", details: err.message });
   }
 });
 
