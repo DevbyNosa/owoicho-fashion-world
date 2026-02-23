@@ -159,15 +159,26 @@ router.get("/backend/search",
 
 router.delete("/api/chats/:id", async (req, res) => {
    if (!req.isAuthenticated()) { 
-    return res.redirect("/backend"); 
+    return res.status(401).json({ error: "Unauthorized" }); 
   }
   const { id } = req.params;
   try {
-    await query("DELETE FROM chats WHERE id = $1", [id]);
+    const result = await query("DELETE FROM chats WHERE id = $1 RETURNING id", [id]);
+    
+    if (result.rowCount === 0) {
+      return res.status(404).json({ error: "Chat not found" });
+    }
+    
+    // For HTMX, send the redirect header
     res.setHeader("HX-Redirect", "/backend/chats");
-    res.status(200).send("");
+    res.status(200).json({ success: true, message: "Chat deleted successfully" });
   } catch (err) {
-    res.status(500).send("Delete Failed");
+    console.error("Delete Chat Error:", {
+      message: err.message,
+      code: err.code,
+      detail: err.detail
+    });
+    res.status(500).json({ error: "Failed to delete chat" });
   }
 });
 
