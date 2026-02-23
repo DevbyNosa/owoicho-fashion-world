@@ -20,18 +20,30 @@ router.post("/chat", async (req, res) => {
   
   // Validate required fields
   if (!name || !text || !service || !message) {
-    return res.status(400).render("home.ejs", { 
-      notify: "Please fill in all required fields" 
-    });
+    try {
+      const contentData = await query("SELECT * FROM content_upload LIMIT 1");
+      return res.status(400).render("home.ejs", { 
+        notify: "Please fill in all required fields",
+        data: contentData.rows[0] || {}
+      });
+    } catch (e) {
+      return res.status(500).send("Server error");
+    }
   }
   
   try {
+    // Insert the chat message
     await query(
       "INSERT INTO chats (chat_name, chat_contact, chat_service, chat_message, created_at) VALUES ($1, $2, $3, $4, CURRENT_DATE)",
       [name, text, service, message]
     );
+    
+    // Fetch content data for the page
+    const contentData = await query("SELECT * FROM content_upload LIMIT 1");
+    
     res.render("home.ejs", {
-      notify: `Hey ${name}, we have received your message. We'll get back to you soon!`
+      notify: `Hey ${name}, we have received your message. We'll get back to you soon!`,
+      data: contentData.rows[0] || {}
     });
   } catch (err) {
     // Log error details - important for debugging in production
@@ -42,9 +54,15 @@ router.post("/chat", async (req, res) => {
       code: err.code
     });
     
-    res.status(500).render("home.ejs", { 
-      notify: "Error saving your message. Please try again or contact via WhatsApp." 
-    });
+    try {
+      const contentData = await query("SELECT * FROM content_upload LIMIT 1");
+      res.status(500).render("home.ejs", { 
+        notify: "Error saving your message. Please try again or contact via WhatsApp.",
+        data: contentData.rows[0] || {}
+      });
+    } catch (renderErr) {
+      res.status(500).send("Server error");
+    }
   }
 });
 
