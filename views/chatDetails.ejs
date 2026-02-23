@@ -16,17 +16,32 @@
 
         <div class="action-buttons">
          <a href="/backend/chats">← Back </a>
-     
-         <button
-    hx-delete="/api/chats/<%= chat.id %>"
-    hx-confirm="Are you sure you want to delete this message?"
-    class="delete-btn">
-    Delete
-</button>
+         <form action="/backend/chat/<%= chat.id %>/delete" method="POST" style="display:inline;">
+           <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this message?')">
+             Delete
+           </button>
+         </form>
   
          </div>
    </main>
 
  <script src="/js/admin.js"></script>
+ <script>
+   // Debug HTMX delete button
+   document.addEventListener('htmx:beforeRequest', function(event) {
+     console.log('HTMX Request:', {
+       verb: event.detail.verb,
+       path: event.detail.path,
+       xhr: event.detail.xhr
+     });
+   });
+   
+   document.addEventListener('htmx:afterRequest', function(event) {
+     console.log('HTMX Response:', {
+       status: event.detail.xhr.status,
+       response: event.detail.xhr.responseText
+     });
+   });
+ </script>
 </body>
 </html>
