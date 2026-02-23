@@ -8,27 +8,43 @@ router.get("/", (req, res) => {
   res.render("home.ejs", { notify: "" });
 });
 
+// GET /chat - redirect to home with success message
+router.get("/chat", (req, res) => {
+  res.redirect("/");
+});
+
 
 router.post("/chat", async (req, res) => {
   
   const { name, text, service, message } = req.body;
+  
+  // Validate required fields
+  if (!name || !text || !service || !message) {
+    return res.status(400).render("home.ejs", { 
+      notify: "Please fill in all required fields" 
+    });
+  }
+  
   try {
     await query(
       "INSERT INTO chats (chat_name, chat_contact, chat_service, chat_message, created_at) VALUES ($1, $2, $3, $4, CURRENT_DATE)",
       [name, text, service, message]
     );
     res.render("home.ejs", {
-      notify: `Hey ${name}, we have received your message`
+      notify: `Hey ${name}, we have received your message. We'll get back to you soon!`
     });
   } catch (err) {
-    // Log error details only in development
-    if (process.env.NODE_ENV !== 'production') {
-      console.log("--- DATABASE ERROR DETAILS ---");
-      console.log("Message:", err.message);
-      console.log("Column:", err.column);
-      console.log("Detail:", err.detail);
-    }
-    res.status(500).send("Database error occurred. Please try again later.");
+    // Log error details - important for debugging in production
+    console.error("Chat Error:", {
+      message: err.message,
+      column: err.column,
+      detail: err.detail,
+      code: err.code
+    });
+    
+    res.status(500).render("home.ejs", { 
+      notify: "Error saving your message. Please try again or contact via WhatsApp." 
+    });
   }
 });
 
@@ -42,6 +58,7 @@ router.get("/api/chats/:id", async (req, res) => {
     const result = await query("SELECT * FROM chats WHERE id = $1", [id]);
     if (result.rows.length > 0) {
       res.json(result.rows[0]);
+    
     } else {
       res.status(404).json({ error: "Message not found" });
     }
