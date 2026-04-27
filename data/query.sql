@@ -5,7 +5,7 @@
     chat_service VARCHAR(25),
     chat_message VARCHAR(300),
     created_at DATE
-  )
+  );
 
   -- UPLOADING TEXT CONTENTS TO DB FOR HOME PAGE --
 CREATE TABLE content_Upload (

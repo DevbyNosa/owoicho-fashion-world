@@ -77,6 +77,10 @@
   .about-features li {
     align-items: center;
   }
+
+  .about-h1 {
+    font-size: 30px;
+  }
 }
 @media(max-width: 760px) {
   html, body {

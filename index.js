@@ -16,6 +16,7 @@ import dashboardRoutes from './routes/adminDashboard.js'
 import maintenanceMiddleware from './routes/maintenance.js';
 import adminLogo from './routes/adminLogo.js';
 import adminImages from './routes/adminImages.js';
+import pool from './config/db.js'
 
 
 
@@ -55,6 +56,7 @@ app.use(helmet());
 app.use(maintenanceMiddleware);
 
 app.use(express.static('public'))
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs")
 
